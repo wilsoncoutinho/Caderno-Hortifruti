@@ -73,87 +73,87 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // Lista de produtos limpa (sem categorias, sem preços, ordem original)
+        // Lista de produtos com imagens e dados salvos DIRETO NO CÓDIGO
         const rawData = [
-            { name: "RABANETE KG", code: "54454" },
-            { name: "MAXIXE 1KG", code: "1283" },
-            { name: "QUIABO 1KG", code: "1283" },
-            { name: "CHUCHU KG", code: "5272" },
-            { name: "CENOURA 1KG", code: "1280" },
-            { name: "BERINGELA KG", code: "5962" },
-            { name: "BATATA DOCE 1KG", code: "281" },
-            { name: "BETERRABA 1KG", code: "1279" },
-            { name: "BATATA DOCE ROXA KG", code: "1919" },
-            { name: "ABOBRINHA 1KG", code: "1275" },
-            { name: "INHAME 1KG", code: "1276" },
-            { name: "MACAXEIRA 1KG", code: "1271" },
-            { name: "GENGIBRE KG", code: "9787" },
-            { name: "CURCUMA 1KG", code: "272" },
-            { name: "PIMENTÃO COLORIDO KG", code: "63395" },
-            { name: "DENTE DE LEÃO 1KG", code: "1273" },
-            { name: "AMENDOIM 1KG", code: "1336" },
-            { name: "PIMENTÃO 1KG", code: "1266" },
-            { name: "PEPINO 1KG", code: "1264" },
-            { name: "ALHO 1KG", code: "7465" },
-            { name: "SALSA 1UND", code: "1257" },
-            { name: "RÚCULA UN1", code: "94504" },
-            { name: "REPOLHO VERDE KG", code: "427791" },
-            { name: "REPOLHO ROXO KG", code: "8880" },
-            { name: "HORTELÃ MIÚDO UN1", code: "435390" },
-            { name: "COUVE FOLHA UN1", code: "344517" },
-            { name: "MANJERICÃO UN1", code: "96720" },
-            { name: "ESPINAFRE UN1", code: "435369" },
-            { name: "CEBOLA BRANCA KG", code: "7483" },
-            { name: "CEBOLA ROXA KG", code: "5941" },
-            { name: "CAPIM SANTO UN1", code: "7483" },
-            { name: "ALFACE UN1", code: "576574" },
-            { name: "ALECRIM UN1", code: "94511" },
-            { name: "ARRUDA UN1", code: "304344" },
-            { name: "UVA VERDE 1KG", code: "1247" },
-            { name: "UVA PASSA 1KG", code: "2243" },
-            { name: "TANGERINA 1KG", code: "1245" },
-            { name: "FRUTAS CRISTALIZADAS KG", code: "9735" },
-            { name: "UVA ROXA 1KG", code: "1246" },
-            { name: "TOMATE KG", code: "7435" },
-            { name: "ROMÃ 1KG", code: "5432" },
-            { name: "PITAYA 1 KG", code: "395" },
-            { name: "PÊSSEGO 1KG", code: "1240" },
-            { name: "MELÃO 1KG", code: "1235" },
-            { name: "MELANCIA GRANDE UN", code: "2394" },
-            { name: "MARACUJÁ 1KG", code: "3612" },
-            { name: "MANGA TOMMY KG", code: "6054" },
-            { name: "MANGA ROSA KG", code: "5545" },
-            { name: "MAÇÃ VERDE 1KG", code: "1227" },
-            { name: "MAÇÃ IMPORTADA KG", code: "6030" },
-            { name: "MAMÃO 1KG", code: "1225" },
-            { name: "LIMÃO KG", code: "122" },
-            { name: "LIMA 1KG", code: "1223" },
-            { name: "KIWI 1KG", code: "1220" },
-            { name: "GOIABA 1KG", code: "121" },
-            { name: "COCO SECO 1UND", code: "2110" },
-            { name: "LARANJA 1KG", code: "1221" },
-            { name: "GRAVIOLA 1KG", code: "1219" },
-            { name: "COCO VERDE 1UN", code: "215" },
-            { name: "CASTANHA KG", code: "35508" },
-            { name: "CAQUI 1KG", code: "1211" },
-            { name: "BANANA DA PRATA KG", code: "970" },
-            { name: "BANANA MAÇÃ KG", code: "1892" },
-            { name: "AMEIXA SECA 1KG", code: "5586" },
-            { name: "ACEROLA PCT UN.", code: "1338" },
-            { name: "BANANA DA TERRA KG", code: "20855" },
-            { name: "BANANA D'ÁGUA KG", code: "6927" },
-            { name: "AMEIXA FRESCA KG", code: "1203" },
-            { name: "ABACAXI UN", code: "1472" },
-            { name: "ABACATE 1KG", code: "1201" },
-            { name: "ABOBORA JACARÉ KG", code: "2000" },
-            { name: "ABOBORA LEITE 1KG", code: "1274" },
-            { name: "CAJU 1KG", code: "1939" },
-            { name: "MAÇÃ NACIONAL PQ 1KG", code: "1206" },
-            { name: "MANGA ESPADA 1KG", code: "5545" },
-            { name: "MELANCIA MÉDIA UN", code: "7306" },
-            { name: "PÊRA 1KG", code: "1239" },
-            { name: "PINHA 1KG", code: "5432" },
-            { name: "MANGA PALMER KG", code: "6030" }
+            { name: "ABACATE 1KG", code: "1201", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABACATE" },
+            { name: "ABACAXI UN", code: "1472", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABACAXI" },
+            { name: "ABOBORA JACARÉ KG", code: "2000", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABOBORA" },
+            { name: "ABOBORA LEITE 1KG", code: "1274", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABOBORA" },
+            { name: "ABOBRINHA 1KG", code: "1275", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABOBRINHA" },
+            { name: "ACEROLA PCT UN.", code: "1338", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ACEROLA" },
+            { name: "ALECRIM UN1", code: "94511", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ALECRIM" },
+            { name: "ALFACE UN1", code: "576574", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ALFACE" },
+            { name: "ALHO 1KG", code: "7465", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ALHO" },
+            { name: "AMEIXA FRESCA KG", code: "1203", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=AMEIXA" },
+            { name: "AMEIXA SECA 1KG", code: "5586", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=AMEIXA" },
+            { name: "AMENDOIM 1KG", code: "1336", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=AMENDOIM" },
+            { name: "ARRUDA UN1", code: "304344", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ARRUDA" },
+            { name: "BANANA D'ÁGUA KG", code: "6927", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BANANA" },
+            { name: "BANANA DA PRATA KG", code: "970", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BANANA" },
+            { name: "BANANA DA TERRA KG", code: "20855", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BANANA" },
+            { name: "BANANA MAÇÃ KG", code: "1892", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BANANA" },
+            { name: "BATATA DOCE 1KG", code: "281", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BATATA" },
+            { name: "BATATA DOCE ROXA KG", code: "1919", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BATATA" },
+            { name: "BERINGELA KG", code: "5962", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BERINGELA" },
+            { name: "BETERRABA 1KG", code: "1279", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BETERRABA" },
+            { name: "CAPIM SANTO UN1", code: "7483", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CAPIM" },
+            { name: "CAQUI 1KG", code: "1211", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CAQUI" },
+            { name: "CASTANHA KG", code: "35508", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CASTANHA" },
+            { name: "CAJU 1KG", code: "1939", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CAJU" },
+            { name: "CEBOLA BRANCA KG", code: "7483", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CEBOLA" },
+            { name: "CEBOLA ROXA KG", code: "5941", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CEBOLA" },
+            { name: "CENOURA 1KG", code: "1280", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CENOURA" },
+            { name: "CHUCHU KG", code: "5272", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CHUCHU" },
+            { name: "COCO SECO 1UND", code: "2110", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=COCO" },
+            { name: "COCO VERDE 1UN", code: "215", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=COCO" },
+            { name: "COUVE FOLHA UN1", code: "344517", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=COUVE" },
+            { name: "CURCUMA 1KG", code: "272", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CURCUMA" },
+            { name: "DENTE DE LEÃO 1KG", code: "1273", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=DENTE" },
+            { name: "ESPINAFRE UN1", code: "435369", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ESPINAFRE" },
+            { name: "FRUTAS CRISTALIZADAS KG", code: "9735", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=FRUTAS" },
+            { name: "GENGIBRE KG", code: "9787", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=GENGIBRE" },
+            { name: "GOIABA 1KG", code: "121", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=GOIABA" },
+            { name: "GRAVIOLA 1KG", code: "1219", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=GRAVIOLA" },
+            { name: "HORTELÃ MIÚDO UN1", code: "435390", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=HORTELÃ" },
+            { name: "INHAME 1KG", code: "1276", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=INHAME" },
+            { name: "KIWI 1KG", code: "1220", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=KIWI" },
+            { name: "LARANJA 1KG", code: "1221", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=LARANJA" },
+            { name: "LIMA 1KG", code: "1223", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=LIMA" },
+            { name: "LIMÃO KG", code: "122", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=LIMÃO" },
+            { name: "MACAXEIRA 1KG", code: "1271", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MACAXEIRA" },
+            { name: "MAÇÃ IMPORTADA KG", code: "6030", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAÇÃ" },
+            { name: "MAÇÃ NACIONAL PQ 1KG", code: "1206", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAÇÃ" },
+            { name: "MAÇÃ VERDE 1KG", code: "1227", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAÇÃ" },
+            { name: "MAMÃO 1KG", code: "1225", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAMÃO" },
+            { name: "MANGA ESPADA 1KG", code: "5545", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MANGA" },
+            { name: "MANGA PALMER KG", code: "6030", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MANGA" },
+            { name: "MANGA ROSA KG", code: "5545", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MANGA" },
+            { name: "MANGA TOMMY KG", code: "6054", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MANGA" },
+            { name: "MANJERICÃO UN1", code: "96720", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MANJERICÃO" },
+            { name: "MARACUJÁ 1KG", code: "3612", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MARACUJÁ" },
+            { name: "MAXIXE 1KG", code: "1283", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAXIXE" },
+            { name: "MELANCIA GRANDE UN", code: "2394", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MELANCIA" },
+            { name: "MELANCIA MÉDIA UN", code: "7306", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MELANCIA" },
+            { name: "MELÃO 1KG", code: "1235", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MELÃO" },
+            { name: "PEPINO 1KG", code: "1264", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PEPINO" },
+            { name: "PIMENTÃO 1KG", code: "1266", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PIMENTÃO" },
+            { name: "PIMENTÃO COLORIDO KG", code: "63395", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PIMENTÃO" },
+            { name: "PINHA 1KG", code: "5432", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PINHA" },
+            { name: "PITAYA 1 KG", code: "395", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PITAYA" },
+            { name: "PÊRA 1KG", code: "1239", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PÊRA" },
+            { name: "PÊSSEGO 1KG", code: "1240", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PÊSSEGO" },
+            { name: "QUIABO 1KG", code: "1283", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=QUIABO" },
+            { name: "RABANETE KG", code: "54454", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=RABANETE" },
+            { name: "REPOLHO ROXO KG", code: "8880", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=REPOLHO" },
+            { name: "REPOLHO VERDE KG", code: "427791", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=REPOLHO" },
+            { name: "ROMÃ 1KG", code: "5432", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ROMÃ" },
+            { name: "RÚCULA UN1", code: "94504", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=RÚCULA" },
+            { name: "SALSA 1UND", code: "1257", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=SALSA" },
+            { name: "TANGERINA 1KG", code: "1245", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=TANGERINA" },
+            { name: "TOMATE KG", code: "7435", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=TOMATE" },
+            { name: "UVA PASSA 1KG", code: "2243", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=UVA" },
+            { name: "UVA ROXA 1KG", code: "1246", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=UVA" },
+            { name: "UVA VERDE 1KG", code: "1247", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=UVA" }
         ];
 
         // Componente para renderizar o Código de Barras
@@ -185,79 +185,18 @@
             // Ordenar alfabeticamente
             const sortedData = [...rawData].sort((a, b) => a.name.localeCompare(b.name));
             
-            // Mapeamento de imagens reais para os produtos
-            const mealDbMapping = {
-                "CENOURA": "Carrots",
-                "BERINGELA": "Eggplant",
-                "BATATA DOCE": "Sweet Potatoes",
-                "ABOBRINHA": "Zucchini",
-                "GENGIBRE": "Ginger",
-                "CURCUMA": "Turmeric",
-                "PIMENTÃO COLORIDO": "Red Pepper",
-                "AMENDOIM": "Peanuts",
-                "PIMENTÃO": "Green Pepper",
-                "PEPINO": "Cucumber",
-                "ALHO": "Garlic",
-                "SALSA": "Parsley",
-                "REPOLHO VERDE": "Cabbage",
-                "REPOLHO ROXO": "Red Cabbage",
-                "MANJERICÃO": "Basil",
-                "ESPINAFRE": "Spinach",
-                "CEBOLA BRANCA": "Onion",
-                "CEBOLA ROXA": "Red Onions",
-                "ALFACE": "Lettuce",
-                "ALECRIM": "Rosemary",
-                "UVA VERDE": "Green Grapes",
-                "UVA PASSA": "Raisins",
-                "UVA": "Grapes",
-                "TOMATE": "Tomato",
-                "PÊSSEGO": "Peach",
-                "MELANCIA": "Watermelon",
-                "MANGA": "Mango",
-                "MAÇÃ": "Apple",
-                "KIWI": "Kiwi",
-                "LARANJA": "Orange",
-                "BANANA": "Banana",
-                "ABACAXI": "Pineapple",
-                "ABACATE": "Avocado",
-                "PÊRA": "Pears",
-                "LIMÃO": "Lime",
-                "LIMA": "Lemon",
-                "COCO": "Coconut",
-                "CASTANHA": "Chestnuts"
-            };
-
             const getImageUrl = (name) => {
-                // Tenta encontrar uma correspondência no banco de dados de imagens
-                for (const [ptName, enName] of Object.entries(mealDbMapping)) {
-                    if (name.includes(ptName)) {
-                        return `https://www.themealdb.com/images/ingredients/${encodeURIComponent(enName)}.png`;
-                    }
-                }
-                // Placeholder genérico caso não encontre
+                // Placeholder genérico para quando adicionar um novo produto
                 const firstName = name.split(' ')[0] || 'Produto';
                 return `https://placehold.co/200x200/f0f4f8/009B3A?text=${encodeURIComponent(firstName)}`;
             };
 
-            // Estado para armazenar os itens, carregando do LocalStorage se existir
-            const [items, setItems] = React.useState(() => {
-                const saved = localStorage.getItem('hortifruti_caderno_dados');
-                if (saved) {
-                    return JSON.parse(saved);
-                }
-                return sortedData.map(item => ({
-                    ...item,
-                    image: getImageUrl(item.name)
-                }));
-            });
+            // Estado para armazenar os itens
+            // Removido o LocalStorage para garantir que a lista do código (rawData) seja sempre usada
+            const [items, setItems] = React.useState(sortedData);
 
             // Estado para controlar o modo de edição
             const [isEditing, setIsEditing] = React.useState(false);
-
-            // Salva no LocalStorage sempre que os itens mudam
-            React.useEffect(() => {
-                localStorage.setItem('hortifruti_caderno_dados', JSON.stringify(items));
-            }, [items]);
 
             // Funções de edição
             const updateItem = (index, field, value) => {
@@ -280,11 +219,7 @@
 
             const resetData = () => {
                 if(window.confirm('Isso apagará todas as suas edições manuais e restaurará a lista original. Continuar?')) {
-                    const reset = sortedData.map(item => ({
-                        ...item,
-                        image: getImageUrl(item.name)
-                    }));
-                    setItems(reset);
+                    setItems(sortedData);
                     setIsEditing(false);
                 }
             };
