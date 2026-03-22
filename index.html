@@ -74,43 +74,44 @@
 
     <script type="text/babel">
         // Lista de produtos com imagens e dados salvos DIRETO NO CÓDIGO
+    
         const rawData = [
             { name: "ABACATE 1KG", code: "1201", image: "https://www.themealdb.com/images/ingredients/Avocado.png" },
             { name: "ABACAXI UN", code: "1472", image: "https://www.themealdb.com/images/ingredients/Pineapple.png" },
-            { name: "ABOBORA JACARÉ KG", code: "2000", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABOBORA" },
-            { name: "ABOBORA LEITE 1KG", code: "1274", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ABOBORA" },
+            { name: "ABOBORA JACARÉ KG", code: "2000", image: "https://framerusercontent.com/images/xvo8HbZxbic0L17bsDRcbMrf2M.png?width=1080&height=1080" },
+            { name: "ABOBORA LEITE 1KG", code: "1274", image: "https://mfrsementes.com.br/thumbnail.php?pic=uplimg/img_A_1393538_5da400a1c0174aabd2e39bb091a0df17.jpg&w=750&sq=Y" },
             { name: "ABOBRINHA 1KG", code: "1275", image: "https://www.themealdb.com/images/ingredients/Zucchini.png" },
-            { name: "ACEROLA PCT UN.", code: "1338", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ACEROLA" },
-            { name: "ALECRIM UN1", code: "94511", image: "https://www.themealdb.com/images/ingredients/Rosemary.png" },
-            { name: "ALFACE UN1", code: "576574", image: "https://www.themealdb.com/images/ingredients/Lettuce.png" },
-            { name: "ALHO 1KG", code: "7465", image: "https://www.themealdb.com/images/ingredients/Garlic.png" },
-            { name: "AMEIXA FRESCA KG", code: "1203", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=AMEIXA" },
-            { name: "AMEIXA SECA 1KG", code: "5586", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=AMEIXA" },
+            { name: "ACEROLA PCT UN.", code: "1338", image: "https://cdn-cosmos.bluesoft.com.br/products/7898013850032" },
+            { name: "ALECRIM UN1", code: "9449", image: "https://www.themealdb.com/images/ingredients/Rosemary.png" },
+            { name: "ALFACE UN1", code: "57656", image: "https://www.themealdb.com/images/ingredients/Lettuce.png" },
+            { name: "ALHO 1KG", code: "1257", image: "https://www.themealdb.com/images/ingredients/Garlic.png" },
+            { name: "AMEIXA FRESCA KG", code: "1203", image: "https://www.infoescola.com/wp-content/uploads/2010/08/ameixa-fruta_645293734-1.jpg" },
+            { name: "AMEIXA SECA 1KG", code: "5586", image: "https://armazemsaovito.fbitsstatic.net/img/p/ameixa-sem-caroco-160728/357477.jpg?w=344&h=344&v=202512021454&qs=ignore" },
             { name: "AMENDOIM 1KG", code: "1336", image: "https://www.themealdb.com/images/ingredients/Peanuts.png" },
-            { name: "ARRUDA UN1", code: "304344", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ARRUDA" },
-            { name: "BANANA D'ÁGUA KG", code: "6927", image: "https://www.themealdb.com/images/ingredients/Banana.png" },
-            { name: "BANANA DA PRATA KG", code: "970", image: "https://www.themealdb.com/images/ingredients/Banana.png" },
-            { name: "BANANA DA TERRA KG", code: "20855", image: "https://www.themealdb.com/images/ingredients/Banana.png" },
-            { name: "BANANA MAÇÃ KG", code: "1892", image: "https://www.themealdb.com/images/ingredients/Banana.png" },
-            { name: "BATATA DOCE 1KG", code: "281", image: "https://www.themealdb.com/images/ingredients/Sweet%20Potatoes.png" },
-            { name: "BATATA DOCE ROXA KG", code: "1919", image: "https://www.themealdb.com/images/ingredients/Sweet%20Potatoes.png" },
-            { name: "BERINGELA KG", code: "5962", image: "https://www.themealdb.com/images/ingredients/Eggplant.png" },
-            { name: "BETERRABA 1KG", code: "1279", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=BETERRABA" },
-            { name: "CAPIM SANTO UN1", code: "7483", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CAPIM" },
-            { name: "CAQUI 1KG", code: "1211", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CAQUI" },
-            { name: "CASTANHA KG", code: "35508", image: "https://www.themealdb.com/images/ingredients/Chestnuts.png" },
-            { name: "CAJU 1KG", code: "1939", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CAJU" },
+            { name: "ARRUDA UN1", code: "9673", image: "https://organicodiniz.com.br/wp-content/uploads/2023/01/ebd524356b24418e78479af8e90794477ffb4f4669b63407952620aa323eea00_full.jpg" },
+            { name: "BANANA D'ÁGUA KG", code: "6927", image: "https://dcdn-us.mitiendanube.com/stores/002/901/631/products/sem-nome-10241024px-561-0a721cbc63d6de9dcc16801058917847-1024-1024.webp" },
+            { name: "BANANA DA PRATA KG", code: "970", image: "https://i0.wp.com/produtosnaturaisbh.com.br/wp-content/uploads/2021/07/banana_prata.webp?fit=859%2C859&ssl=1" },
+            { name: "BANANA DA TERRA KG", code: "20855", image: "https://cdn.awsli.com.br/300x300/2772/2772039/produto/392419221/banana-da-terra-ana-hi6v0um8wr.png" },
+            { name: "BANANA MAÇÃ KG", code: "1892", image: "https://vallefrutas.com.br/wp-content/uploads/banana-maca.png" },
+            { name: "BATATA DOCE 1KG", code: "1276", image: "https://www.bernardaoemcasa.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/a/batata-doce-branca2_6.jpg" },
+            { name: "BATATA DOCE ROXA KG", code: "1919", image: "https://meufestval.vtexassets.com/arquivos/ids/188698/batata-doce-roxa-kg-festval-2540-.jpg?v=638060219658470000" },
+            { name: "BERINJELA KG", code: "1278", image: "https://www.themealdb.com/images/ingredients/Eggplant.png" },
+            { name: "BETERRABA 1KG", code: "1279", image: "https://boxfruti.com.br/wp-content/uploads/2025/03/Beterraba.png" },
+            { name: "CAJU 1KG", code: "1939", image: "https://fortalfrut.com.br/wp-content/uploads/2025/02/caju.webp" },
+            { name: "CAPIM SANTO UN1", code: "30433", image: "https://i0.wp.com/sitiopalmeirinha.com.br/wp-content/uploads/2021/07/img_7940.jpeg?fit=828%2C999&ssl=1" },
+            { name: "CAQUI 1KG", code: "1211", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Persimmon-oliv1.jpg/330px-Persimmon-oliv1.jpg" },
+            { name: "CASTANHA KG", code: "38508", image: "https://www.cerealistaexpress.com.br/media/tmp/webp/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/i/mix-de-castanhas-granel_jpeg.webp" },
             { name: "CEBOLA BRANCA KG", code: "7483", image: "https://www.themealdb.com/images/ingredients/Onion.png" },
             { name: "CEBOLA ROXA KG", code: "5941", image: "https://www.themealdb.com/images/ingredients/Red%20Onions.png" },
             { name: "CENOURA 1KG", code: "1280", image: "https://www.themealdb.com/images/ingredients/Carrots.png" },
-            { name: "CHUCHU KG", code: "5272", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=CHUCHU" },
-            { name: "COCO SECO 1UND", code: "2110", image: "https://www.themealdb.com/images/ingredients/Coconut.png" },
-            { name: "COCO VERDE 1UN", code: "215", image: "https://www.themealdb.com/images/ingredients/Coconut.png" },
-            { name: "COUVE FOLHA UN1", code: "344517", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=COUVE" },
-            { name: "CURCUMA 1KG", code: "272", image: "https://www.themealdb.com/images/ingredients/Turmeric.png" },
-            { name: "DENTE DE LEÃO 1KG", code: "1273", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=DENTE" },
-            { name: "ESPINAFRE UN1", code: "435369", image: "https://www.themealdb.com/images/ingredients/Spinach.png" },
-            { name: "FRUTAS CRISTALIZADAS KG", code: "9735", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=FRUTAS" },
+            { name: "CHUCHU KG", code: "281", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf3t1tTbaIglzbyxLG3RA8HSAQ154XOT1hC5w0_gIDahEUD-3sZLY3Yf44MpT1cT9qVq7HBjPS9lPQsVoob-GzddsDWxJ_R0PfjPsQ_PA&s=10" },
+            { name: "COCO SECO 1UND", code: "2110", image: "https://vallefrutas.com.br/wp-content/uploads/coco-seco-1.png" },
+            { name: "COCO VERDE 1UN", code: "215", image: "https://d3gdr9n5lqb5z7.cloudfront.net/fotos/4057-coco-verde-bahia-03-08-2023-11-38-41-220.jpg" },
+            { name: "COUVE FOLHA UN1", code: "36141", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2H7UVnELCzUy9OL2zziDuyTgtMizhvE7XsICOxJUzscIhAtjL4_AY0gIMbgimzF3hHJhuN-4dWikr8WeOtmife1iebgtEpw-5HBXVdz0&s=10" },
+            { name: "CURCUMA 1KG", code: "272", image: "https://www.maisquitanda.com.br/image/cache/3-temperos/curcuma-800x800.jpg" },
+            { name: "DENTE DE LEÃO 1KG", code: "1272", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=DENTE" },
+            { name: "ESPINAFRE UN1", code: "43535", image: "https://www.themealdb.com/images/ingredients/Spinach.png" },
+            { name: "FR CRISTALIZADAS KG", code: "9735", image: "https://cdn.iset.io/assets/39790/produtos/389/frutas-cristalizadas-secundaria-relva-verde-500g.jpg" },
             { name: "GENGIBRE KG", code: "9787", image: "https://www.themealdb.com/images/ingredients/Ginger.png" },
             { name: "GOIABA 1KG", code: "121", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=GOIABA" },
             { name: "GRAVIOLA 1KG", code: "1219", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=GRAVIOLA" },
@@ -118,42 +119,41 @@
             { name: "INHAME 1KG", code: "1276", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=INHAME" },
             { name: "KIWI 1KG", code: "1220", image: "https://www.themealdb.com/images/ingredients/Kiwi.png" },
             { name: "LARANJA 1KG", code: "1221", image: "https://www.themealdb.com/images/ingredients/Orange.png" },
-            { name: "LIMA 1KG", code: "1223", image: "https://www.themealdb.com/images/ingredients/Lemon.png" },
-            { name: "LIMÃO KG", code: "122", image: "https://www.themealdb.com/images/ingredients/Lime.png" },
-            { name: "MACAXEIRA 1KG", code: "1271", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MACAXEIRA" },
-            { name: "MAÇÃ IMPORTADA KG", code: "6030", image: "https://www.themealdb.com/images/ingredients/Apple.png" },
-            { name: "MAÇÃ NACIONAL PQ 1KG", code: "1206", image: "https://www.themealdb.com/images/ingredients/Apple.png" },
-            { name: "MAÇÃ VERDE 1KG", code: "1227", image: "https://www.themealdb.com/images/ingredients/Apple.png" },
-            { name: "MAMÃO 1KG", code: "1225", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAMÃO" },
-            { name: "MANGA ESPADA 1KG", code: "5545", image: "https://www.themealdb.com/images/ingredients/Mango.png" },
-            { name: "MANGA PALMER KG", code: "6030", image: "https://www.themealdb.com/images/ingredients/Mango.png" },
-            { name: "MANGA ROSA KG", code: "5545", image: "https://www.themealdb.com/images/ingredients/Mango.png" },
-            { name: "MANGA TOMMY KG", code: "6054", image: "https://www.themealdb.com/images/ingredients/Mango.png" },
+            { name: "LIMA 1KG", code: "1223", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbQBu37gY-nvjHerie2sBOqUvyOmXh8hpjtgzQ29UrCPk3qaq1sb8CwtjYNoN_BrDIgEPrjT9YavS3Iz1Vi8rl02yOzmfjPrmTOxpiox0&s=10" },
+            { name: "MAÇÃ IMPORTADA KG", code: "1225", image: "https://www.themealdb.com/images/ingredients/Apple.png" },
+            { name: "MAÇÃ NACIONAL KG", code: "1226", image: "https://www.galaxcommerce.com.br/sistema/upload/4765/produtos/maca-nacional-miuda_2020-04-15_13-58-36_1.jpg" },
+            { name: "MAÇÃ VERDE 1KG", code: "1227", image: "https://mercantilatacado.vtexassets.com/arquivos/ids/171127-800-auto?v=638349581135170000&width=800&height=auto&aspect=true" },
+            { name: "MACAXEIRA 1KG", code: "1271", image: "https://tfchgi.vteximg.com.br/arquivos/ids/172804-1000-1000/macaxeira.jpg?v=637929799566470000" },
+            { name: "MAMÃO 1KG", code: "1228", image: "https://coopsp.vtexassets.com/arquivos/ids/215979-800-auto?v=637919530767570000&width=800&height=auto&aspect=true" },
+            { name: "MANGA ESPADA 1KG", code: "1230", image: "https://boxfruti.com.br/wp-content/uploads/2025/03/muda_de_manga_bourbon_enxertada_1147_1_77f0fec049cebd01568ea9d44667ce18.webp" },
+            { name: "MANGA PALMER KG", code: "6030", image: "https://cdn.awsli.com.br/300x300/681/681419/produto/265411876/manga-palmer-2ys6v2qa3v.png" },
+            { name: "MANGA ROSA KG", code: "5545", image: "https://www.quitandatomio.com.br/upload/1888977390-beneficios-da-manga-rosa-para-a-saude.jpg" },
+            { name: "MANGA TOMMY KG", code: "6054", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVOmWBKn8McVsqqd_-zqSi7p4BpIhhEIrXA&s" },
             { name: "MANJERICÃO UN1", code: "96720", image: "https://www.themealdb.com/images/ingredients/Basil.png" },
-            { name: "MARACUJÁ 1KG", code: "3612", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MARACUJÁ" },
-            { name: "MAXIXE 1KG", code: "1283", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MAXIXE" },
-            { name: "MELANCIA GRANDE UN", code: "2394", image: "https://www.themealdb.com/images/ingredients/Watermelon.png" },
-            { name: "MELANCIA MÉDIA UN", code: "7306", image: "https://www.themealdb.com/images/ingredients/Watermelon.png" },
-            { name: "MELÃO 1KG", code: "1235", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=MELÃO" },
-            { name: "PEPINO 1KG", code: "1264", image: "https://www.themealdb.com/images/ingredients/Cucumber.png" },
+            { name: "MARACUJÁ 1KG", code: "3612", image: "https://vasoeflor.cdn.magazord.com.br/img/2022/07/produto/1090/muda-maracuja-acido-90cm.jpg?ims=fit-in/425x425/filters:fill(white)" },
+            { name: "MAXIXE 1KG", code: "5272", image: "https://images.tcdn.com.br/img/img_prod/763396/maxixe_311_1_20200320161655.jpg" },
+            { name: "MELANCIA GRANDE UN", code: "2394", image: "https://assets.instabuy.app.br/ib.item.image.large/l-4f00286a9f26410ab6b903960a62f62a.jpeg" },
+            { name: "MELANCIA MÉDIA UN", code: "7306", image: "https://io.convertiez.com.br/m/superpaguemenos/shop/products/images/16582/medium/melancia-inteira-kg_18984.jpg" },
+            { name: "MELÃO 1KG", code: "1235", image: "https://www.proativaalimentos.com.br/image/cache/catalog/img_prod/melaoamarelo1_502698640_jpg_1024x1024[1]-1000x1000.jpg" },
+            { name: "PEPINO 1KG", code: "1264", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpXBLqblI3Ou1LAY61HNQa61bI_GewfP_obUMvM_oL8AT-1Au9HfYNipBTznO37sZiEsVbxrjtIt4m1kmJLBmoK98k0zIle2Ii7zVow&s=10" },
+            { name: "PERA 1KG", code: "1239", image: "https://www.themealdb.com/images/ingredients/Pears.png" },
+            { name: "PÊSSEGO 1KG", code: "1240", image: "https://cdn.awsli.com.br/1982/1982052/produto/138717174/33fa075554.jpg" },
+            { name: "PIMENTA DE CHEIRO", code: "5995", image: "https://d21wiczbqxib04.cloudfront.net/qzdUYpq8T3B-A8ir1-8d3Ou2zUg=/1600x0/smart/https://osuper-ecommerce-frutosdaterra.s3.sa-east-1.amazonaws.com/cec1ec1f-pimenta-cheiro.png" },
             { name: "PIMENTÃO 1KG", code: "1266", image: "https://www.themealdb.com/images/ingredients/Green%20Pepper.png" },
-            { name: "PIMENTÃO COLORIDO KG", code: "63395", image: "https://www.themealdb.com/images/ingredients/Red%20Pepper.png" },
-            { name: "PINHA 1KG", code: "5432", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PINHA" },
-            { name: "PITAYA 1 KG", code: "395", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=PITAYA" },
-            { name: "PÊRA 1KG", code: "1239", image: "https://www.themealdb.com/images/ingredients/Pears.png" },
-            { name: "PÊSSEGO 1KG", code: "1240", image: "https://www.themealdb.com/images/ingredients/Peach.png" },
-            { name: "QUIABO 1KG", code: "1283", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=QUIABO" },
-            { name: "RABANETE KG", code: "54454", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=RABANETE" },
+            { name: "PIMENTÃO COLORIDO", code: "63395", image: "https://www.themealdb.com/images/ingredients/Red%20Pepper.png" },
+            { name: "PITAYA KG", code: "3952", image: "https://images.tcdn.com.br/img/img_prod/350075/muda_de_pitaya_vermelha_40cm_feita_de_estaca_6039_1_20220412114217.jpg" },
+            { name: "QUIABO 1KG", code: "1283", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP3cIw3_Zcg5IL1rZYnYvuKfFVz74HGZ-esysMt8kLoSVBCku3DY-TOv69IGMNh4fZ0vHjOk17g0VufbLXVPODUqvFUGXd6gYDhQBpRw&s=10" },
+            { name: "RABANETE KG", code: "54454", image: "https://scfoods.fbitsstatic.net/img/p/rabanete-400g-70578/257073.jpg?w=800&h=800&v=no-change&qs=ignore" },
             { name: "REPOLHO ROXO KG", code: "8880", image: "https://www.themealdb.com/images/ingredients/Red%20Cabbage.png" },
-            { name: "REPOLHO VERDE KG", code: "427791", image: "https://www.themealdb.com/images/ingredients/Cabbage.png" },
-            { name: "ROMÃ 1KG", code: "5432", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=ROMÃ" },
-            { name: "RÚCULA UN1", code: "94504", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=RÚCULA" },
-            { name: "SALSA 1UND", code: "1257", image: "https://www.themealdb.com/images/ingredients/Parsley.png" },
-            { name: "TANGERINA 1KG", code: "1245", image: "https://placehold.co/200x200/f0f4f8/009B3A?text=TANGERINA" },
-            { name: "TOMATE KG", code: "7435", image: "https://www.themealdb.com/images/ingredients/Tomato.png" },
-            { name: "UVA PASSA 1KG", code: "2243", image: "https://www.themealdb.com/images/ingredients/Raisins.png" },
-            { name: "UVA ROXA 1KG", code: "1246", image: "https://www.themealdb.com/images/ingredients/Grapes.png" },
-            { name: "UVA VERDE 1KG", code: "1247", image: "https://www.themealdb.com/images/ingredients/Green%20Grapes.png" }
+            { name: "REPOLHO VERDE KG", code: "8480", image: "https://www.themealdb.com/images/ingredients/Cabbage.png" },
+            { name: "ROMÃ KG", code: "5432", image: "https://hortifrutibr.vtexassets.com/arquivos/ids/169587-320-auto/Roma-Importada.webp?v=639075384386270000&format=webp&quality=8" },
+            { name: "RÚCULA UN1", code: "94504", image: "https://framerusercontent.com/images/JwodFq9ZJtY9lxV17xWZW96z8s.png?width=1080&height=1080" },
+            { name: "SALSA UN1", code: "42778", image: "https://www.themealdb.com/images/ingredients/Parsley.png" },
+            { name: "TANGERINA 1KG", code: "2243", image: "https://cdn.awsli.com.br/1982/1982052/produto/138705958/607c47a354.jpg" },
+            { name: "TOMATE KG", code: "7438", image: "https://www.themealdb.com/images/ingredients/Tomato.png" },
+            { name: "UVA PASSA 1KG", code: "1245", image: "https://www.themealdb.com/images/ingredients/Raisins.png" },
+            { name: "UVA ROXA 1KG", code: "1246", image: "https://phygital-files.mercafacil.com/Super_Primavera-bucket/uploads/produto/uva_vitoria_f14fc8c2-3f55-48e8-8010-6a6b7cae302c.jpg" },
+            { name: "UVA VERDE 1KG", code: "1247", image: "https://52586.cdn.lojaquevende.com.br/static/52586/sku/frutas-uva-verde-sem-semente--p-1610106700609.png" }
         ];
 
         // Componente para renderizar o Código de Barras
@@ -192,8 +192,18 @@
             };
 
             // Estado para armazenar os itens
-            // Removido o LocalStorage para garantir que a lista do código (rawData) seja sempre usada
-            const [items, setItems] = React.useState(sortedData);
+            const [items, setItems] = React.useState(() => {
+                const saved = localStorage.getItem('hortifruti_dados_v3');
+                if (saved) {
+                    return JSON.parse(saved);
+                }
+                return sortedData;
+            });
+
+            // Salvar automaticamente no navegador
+            React.useEffect(() => {
+                localStorage.setItem('hortifruti_dados_v3', JSON.stringify(items));
+            }, [items]);
 
             // Estado para controlar o modo de edição
             const [isEditing, setIsEditing] = React.useState(false);
@@ -220,8 +230,21 @@
             const resetData = () => {
                 if(window.confirm('Isso apagará todas as suas edições manuais e restaurará a lista original. Continuar?')) {
                     setItems(sortedData);
+                    localStorage.removeItem('hortifruti_dados_v3');
                     setIsEditing(false);
                 }
+            };
+
+            const copyCodeToClipboard = () => {
+                const codeString = `        const rawData = [\n` + 
+                    items.map(item => `            { name: "${item.name}", code: "${item.code}", image: "${item.image}" }`).join(',\n') + 
+                    `\n        ];`;
+                
+                navigator.clipboard.writeText(codeString).then(() => {
+                    alert("✅ Lista copiada com sucesso!\n\nAbra o seu arquivo HTML no bloco de notas, apague a lista antiga (da linha 76 até 145) e cole essa nova no lugar. Salve e mande para o GitHub!");
+                }).catch(() => {
+                    prompt("O seu navegador bloqueou a cópia automática. Copie o código abaixo manualmente (Ctrl+C):", codeString);
+                });
             };
 
             const toggleEditMode = () => {
@@ -267,8 +290,11 @@
                                         <button onClick={resetData} className="bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 px-4 rounded shadow transition-colors text-sm">
                                             Restaurar Original
                                         </button>
+                                        <button onClick={copyCodeToClipboard} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded shadow transition-colors text-sm">
+                                            Copiar Código Definitivo
+                                        </button>
                                         <button onClick={toggleEditMode} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded shadow transition-colors text-sm">
-                                            Salvar Edições
+                                            Concluir Edições
                                         </button>
                                     </>
                                 ) : (
