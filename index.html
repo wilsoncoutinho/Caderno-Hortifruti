@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caderno do Hortifruti</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel para JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- JsBarcode para gerar os códigos de barras -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
+    <style>
+        @media print {
+            body {
+                background-color: #009B3A !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 0.5rem !important;
+            }
+            .page-break-avoid {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+        }
+        
+        /* Fontes para se aproximar do design original */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #009B3A;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Lista de produtos limpa (sem categorias, sem preços, ordem original)
+        const rawData = [
+            { name: "RABANETE KG", code: "54454" },
+            { name: "MAXIXE 1KG", code: "1283" },
+            { name: "QUIABO 1KG", code: "1283" },
+            { name: "CHUCHU KG", code: "5272" },
+            { name: "CENOURA 1KG", code: "1280" },
+            { name: "BERINGELA KG", code: "5962" },
+            { name: "BATATA DOCE 1KG", code: "281" },
+            { name: "BETERRABA 1KG", code: "1279" },
+            { name: "BATATA DOCE ROXA KG", code: "1919" },
+            { name: "ABOBRINHA 1KG", code: "1275" },
+            { name: "INHAME 1KG", code: "1276" },
+            { name: "MACAXEIRA 1KG", code: "1271" },
+            { name: "GENGIBRE KG", code: "9787" },
+            { name: "CURCUMA 1KG", code: "272" },
+            { name: "PIMENTÃO COLORIDO KG", code: "63395" },
+            { name: "DENTE DE LEÃO 1KG", code: "1273" },
+            { name: "AMENDOIM 1KG", code: "1336" },
+            { name: "PIMENTÃO 1KG", code: "1266" },
+            { name: "PEPINO 1KG", code: "1264" },
+            { name: "ALHO 1KG", code: "7465" },
+            { name: "SALSA 1UND", code: "1257" },
+            { name: "RÚCULA UN1", code: "94504" },
+            { name: "REPOLHO VERDE KG", code: "427791" },
+            { name: "REPOLHO ROXO KG", code: "8880" },
+            { name: "HORTELÃ MIÚDO UN1", code: "435390" },
+            { name: "COUVE FOLHA UN1", code: "344517" },
+            { name: "MANJERICÃO UN1", code: "96720" },
+            { name: "ESPINAFRE UN1", code: "435369" },
+            { name: "CEBOLA BRANCA KG", code: "7483" },
+            { name: "CEBOLA ROXA KG", code: "5941" },
+            { name: "CAPIM SANTO UN1", code: "7483" },
+            { name: "ALFACE UN1", code: "576574" },
+            { name: "ALECRIM UN1", code: "94511" },
+            { name: "ARRUDA UN1", code: "304344" },
+            { name: "UVA VERDE 1KG", code: "1247" },
+            { name: "UVA PASSA 1KG", code: "2243" },
+            { name: "TANGERINA 1KG", code: "1245" },
+            { name: "FRUTAS CRISTALIZADAS KG", code: "9735" },
+            { name: "UVA ROXA 1KG", code: "1246" },
+            { name: "TOMATE KG", code: "7435" },
+            { name: "ROMÃ 1KG", code: "5432" },
+            { name: "PITAYA 1 KG", code: "395" },
+            { name: "PÊSSEGO 1KG", code: "1240" },
+            { name: "MELÃO 1KG", code: "1235" },
+            { name: "MELANCIA GRANDE UN", code: "2394" },
+            { name: "MARACUJÁ 1KG", code: "3612" },
+            { name: "MANGA TOMMY KG", code: "6054" },
+            { name: "MANGA ROSA KG", code: "5545" },
+            { name: "MAÇÃ VERDE 1KG", code: "1227" },
+            { name: "MAÇÃ IMPORTADA KG", code: "6030" },
+            { name: "MAMÃO 1KG", code: "1225" },
+            { name: "LIMÃO KG", code: "122" },
+            { name: "LIMA 1KG", code: "1223" },
+            { name: "KIWI 1KG", code: "1220" },
+            { name: "GOIABA 1KG", code: "121" },
+            { name: "COCO SECO 1UND", code: "2110" },
+            { name: "LARANJA 1KG", code: "1221" },
+            { name: "GRAVIOLA 1KG", code: "1219" },
+            { name: "COCO VERDE 1UN", code: "215" },
+            { name: "CASTANHA KG", code: "35508" },
+            { name: "CAQUI 1KG", code: "1211" },
+            { name: "BANANA DA PRATA KG", code: "970" },
+            { name: "BANANA MAÇÃ KG", code: "1892" },
+            { name: "AMEIXA SECA 1KG", code: "5586" },
+            { name: "ACEROLA PCT UN.", code: "1338" },
+            { name: "BANANA DA TERRA KG", code: "20855" },
+            { name: "BANANA D'ÁGUA KG", code: "6927" },
+            { name: "AMEIXA FRESCA KG", code: "1203" },
+            { name: "ABACAXI UN", code: "1472" },
+            { name: "ABACATE 1KG", code: "1201" },
+            { name: "ABOBORA JACARÉ KG", code: "2000" },
+            { name: "ABOBORA LEITE 1KG", code: "1274" },
+            { name: "CAJU 1KG", code: "1939" },
+            { name: "MAÇÃ NACIONAL PQ 1KG", code: "1206" },
+            { name: "MANGA ESPADA 1KG", code: "5545" },
+            { name: "MELANCIA MÉDIA UN", code: "7306" },
+            { name: "PÊRA 1KG", code: "1239" },
+            { name: "PINHA 1KG", code: "5432" },
+            { name: "MANGA PALMER KG", code: "6030" }
+        ];
+
+        // Componente para renderizar o Código de Barras
+        const BarcodeItem = ({ code }) => {
+            const barcodeRef = React.useRef(null);
+            
+            React.useEffect(() => {
+                if (barcodeRef.current && typeof JsBarcode === 'function') {
+                    try {
+                        JsBarcode(barcodeRef.current, code, {
+                            format: "CODE128", // Formato padrão aceito na maioria dos leitores
+                            displayValue: false, // Oculta o número automático para não duplicar com o nosso
+                            width: 1.4, // Largura das barras
+                            height: 25, // Altura do código de barras
+                            margin: 0,
+                            background: "transparent"
+                        });
+                    } catch (e) {
+                        console.error("Erro ao gerar código de barras para", code, e);
+                    }
+                }
+            }, [code]);
+            
+            return <svg ref={barcodeRef} className="w-full max-h-[30px] mt-0.5 mb-0.5"></svg>;
+        };
+
+        // Componente Principal
+        const App = () => {
+            // Ordenar alfabeticamente
+            const sortedData = [...rawData].sort((a, b) => a.name.localeCompare(b.name));
+            
+            // Mapeamento de imagens reais para os produtos
+            const mealDbMapping = {
+                "CENOURA": "Carrots",
+                "BERINGELA": "Eggplant",
+                "BATATA DOCE": "Sweet Potatoes",
+                "ABOBRINHA": "Zucchini",
+                "GENGIBRE": "Ginger",
+                "CURCUMA": "Turmeric",
+                "PIMENTÃO COLORIDO": "Red Pepper",
+                "AMENDOIM": "Peanuts",
+                "PIMENTÃO": "Green Pepper",
+                "PEPINO": "Cucumber",
+                "ALHO": "Garlic",
+                "SALSA": "Parsley",
+                "REPOLHO VERDE": "Cabbage",
+                "REPOLHO ROXO": "Red Cabbage",
+                "MANJERICÃO": "Basil",
+                "ESPINAFRE": "Spinach",
+                "CEBOLA BRANCA": "Onion",
+                "CEBOLA ROXA": "Red Onions",
+                "ALFACE": "Lettuce",
+                "ALECRIM": "Rosemary",
+                "UVA VERDE": "Green Grapes",
+                "UVA PASSA": "Raisins",
+                "UVA": "Grapes",
+                "TOMATE": "Tomato",
+                "PÊSSEGO": "Peach",
+                "MELANCIA": "Watermelon",
+                "MANGA": "Mango",
+                "MAÇÃ": "Apple",
+                "KIWI": "Kiwi",
+                "LARANJA": "Orange",
+                "BANANA": "Banana",
+                "ABACAXI": "Pineapple",
+                "ABACATE": "Avocado",
+                "PÊRA": "Pears",
+                "LIMÃO": "Lime",
+                "LIMA": "Lemon",
+                "COCO": "Coconut",
+                "CASTANHA": "Chestnuts"
+            };
+
+            const getImageUrl = (name) => {
+                // Tenta encontrar uma correspondência no banco de dados de imagens
+                for (const [ptName, enName] of Object.entries(mealDbMapping)) {
+                    if (name.includes(ptName)) {
+                        return `https://www.themealdb.com/images/ingredients/${encodeURIComponent(enName)}.png`;
+                    }
+                }
+                // Placeholder genérico caso não encontre
+                const firstName = name.split(' ')[0] || 'Produto';
+                return `https://placehold.co/200x200/f0f4f8/009B3A?text=${encodeURIComponent(firstName)}`;
+            };
+
+            // Estado para armazenar os itens, carregando do LocalStorage se existir
+            const [items, setItems] = React.useState(() => {
+                const saved = localStorage.getItem('hortifruti_caderno_dados');
+                if (saved) {
+                    return JSON.parse(saved);
+                }
+                return sortedData.map(item => ({
+                    ...item,
+                    image: getImageUrl(item.name)
+                }));
+            });
+
+            // Estado para controlar o modo de edição
+            const [isEditing, setIsEditing] = React.useState(false);
+
+            // Salva no LocalStorage sempre que os itens mudam
+            React.useEffect(() => {
+                localStorage.setItem('hortifruti_caderno_dados', JSON.stringify(items));
+            }, [items]);
+
+            // Funções de edição
+            const updateItem = (index, field, value) => {
+                const newItems = [...items];
+                newItems[index][field] = value;
+                setItems(newItems);
+            };
+
+            const deleteItem = (index) => {
+                if(window.confirm('Tem certeza que deseja remover este produto?')) {
+                    const newItems = items.filter((_, i) => i !== index);
+                    setItems(newItems);
+                }
+            };
+
+            const addItem = () => {
+                setItems([{ name: "NOVO PRODUTO", code: "0000", image: getImageUrl("NOVO PRODUTO") }, ...items]);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            const resetData = () => {
+                if(window.confirm('Isso apagará todas as suas edições manuais e restaurará a lista original. Continuar?')) {
+                    const reset = sortedData.map(item => ({
+                        ...item,
+                        image: getImageUrl(item.name)
+                    }));
+                    setItems(reset);
+                    setIsEditing(false);
+                }
+            };
+
+            const toggleEditMode = () => {
+                if (isEditing) {
+                    // Ordena ao sair do modo de edição para manter a organização
+                    const sorted = [...items].sort((a, b) => a.name.localeCompare(b.name));
+                    setItems(sorted);
+                }
+                setIsEditing(!isEditing);
+            };
+
+            // Função para trocar a imagem clicando nela
+            const handleImageChange = (index) => {
+                const newUrl = prompt(`Cole a URL de uma imagem realista para: ${items[index].name}\n(Exemplo: copie o endereço de uma imagem do Google)`);
+                if (newUrl && newUrl.trim() !== '') {
+                    const newItems = [...items];
+                    newItems[index].image = newUrl;
+                    setItems(newItems);
+                }
+            };
+
+            return (
+                <div className="min-h-screen pb-12">
+                    {/* Barra de Ferramentas (Oculta na impressão) */}
+                    <div className="no-print bg-white p-4 shadow-md mb-6 flex flex-col gap-4">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div>
+                                <h1 className="text-2xl font-bold text-gray-800">Caderno do Hortifruti</h1>
+                                <p className="text-sm text-gray-600 mt-1">
+                                    {isEditing ? (
+                                        <strong className="text-red-600">Modo de Edição Ativo: Altere nomes, códigos ou adicione produtos.</strong>
+                                    ) : (
+                                        <span><strong>Dica:</strong> Clique em "Editar Caderno" para alterar nomes/códigos, ou clique nas imagens para trocar as fotos.</span>
+                                    )}
+                                </p>
+                            </div>
+                            <div className="flex flex-wrap gap-2 justify-center">
+                                {isEditing ? (
+                                    <>
+                                        <button onClick={addItem} className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow transition-colors text-sm">
+                                            + Adicionar Produto
+                                        </button>
+                                        <button onClick={resetData} className="bg-red-100 hover:bg-red-200 text-red-700 font-bold py-2 px-4 rounded shadow transition-colors text-sm">
+                                            Restaurar Original
+                                        </button>
+                                        <button onClick={toggleEditMode} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded shadow transition-colors text-sm">
+                                            Salvar Edições
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button onClick={toggleEditMode} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded shadow transition-colors text-sm flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                        </svg>
+                                        Editar Caderno
+                                    </button>
+                                )}
+                                <button 
+                                    onClick={() => { if(!isEditing) window.print(); else { toggleEditMode(); setTimeout(() => window.print(), 500); } }} 
+                                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow transition-colors flex items-center gap-2 text-sm"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fillRule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clipRule="evenodd" />
+                                    </svg>
+                                    Imprimir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Grid de Produtos */}
+                    <div className="max-w-[1200px] mx-auto px-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 print-grid">
+                            {items.map((item, index) => (
+                                <div key={index} className="bg-white rounded-lg flex flex-row shadow-sm w-full h-[145px] overflow-hidden border border-gray-100 page-break-avoid relative group">
+                                    
+                                    {/* Botão de excluir no modo edição */}
+                                    {isEditing && (
+                                        <button 
+                                            onClick={() => deleteItem(index)}
+                                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-md z-10 hover:bg-red-700 no-print"
+                                            title="Remover produto"
+                                        >
+                                            X
+                                        </button>
+                                    )}
+
+                                    {/* Lado Esquerdo - Informações */}
+                                    <div className="flex-[3] flex flex-col p-1.5 relative">
+                                        
+                                        {/* Letra no canto e Código */}
+                                        <div className="flex items-start">
+                                            <div className="bg-[#002776] text-white font-black text-2xl w-8 h-8 flex items-center justify-center leading-none uppercase">
+                                                {(item.name.charAt(0) || ' ').toUpperCase()}
+                                            </div>
+                                            <div className="flex-1 ml-1.5 mt-0.5">
+                                                <div className="bg-[#FEDF00] text-[#002776] text-[9px] font-bold px-1 py-0.5 rounded-sm inline-block tracking-wider uppercase">
+                                                    Código
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        {/* Número Grande */}
+                                        {isEditing ? (
+                                            <input 
+                                                type="text" 
+                                                value={item.code} 
+                                                onChange={(e) => updateItem(index, 'code', e.target.value)}
+                                                className="w-full text-[24px] font-black text-[#002776] text-center mt-0 tracking-tighter leading-none border-b-2 border-dashed border-[#002776] focus:outline-none focus:bg-gray-100"
+                                                placeholder="CÓDIGO"
+                                            />
+                                        ) : (
+                                            <div className="text-[26px] font-black text-[#002776] text-center mt-0 tracking-tighter leading-none">
+                                                {item.code}
+                                            </div>
+                                        )}
+                                        
+                                        {/* Código de Barras Escaneável */}
+                                        <div className="flex justify-center items-center w-full px-1">
+                                            <BarcodeItem code={item.code} />
+                                        </div>
+                                        
+                                        <div className="mt-auto"></div>
+                                        
+                                        {/* Faixa Produto e Nome */}
+                                        <div className="w-full px-1 mb-1">
+                                            <div className="bg-[#FEDF00] w-full text-[#002776] text-[9px] font-bold px-1 py-0.5 rounded-sm text-center tracking-wider uppercase">
+                                                Produto
+                                            </div>
+                                            {isEditing ? (
+                                                <input 
+                                                    type="text" 
+                                                    value={item.name} 
+                                                    onChange={(e) => updateItem(index, 'name', e.target.value.toUpperCase())}
+                                                    className="w-full text-[10px] sm:text-[11px] font-black text-[#002776] text-center mt-1 uppercase leading-[1.1] border-b-2 border-dashed border-[#002776] focus:outline-none focus:bg-gray-100 h-auto"
+                                                    placeholder="NOME DO PRODUTO"
+                                                />
+                                            ) : (
+                                                <div className="text-[11px] font-black text-[#002776] text-center mt-1 uppercase leading-[1.1] h-auto flex items-center justify-center break-words">
+                                                    {item.name}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Linha Divisória */}
+                                    <div className="w-[1px] h-[85%] bg-[#002776] my-auto opacity-30"></div>
+                                    
+                                    {/* Lado Direito - Imagem Editável */}
+                                    <div 
+                                        className="flex-[2] bg-white flex items-center justify-center p-2 cursor-pointer relative group"
+                                        onClick={() => handleImageChange(index)}
+                                        title="Clique para alterar a imagem"
+                                    >
+                                        <img 
+                                            src={item.image} 
+                                            alt={item.name} 
+                                            className="max-w-full max-h-[110px] object-contain transition-transform group-hover:scale-105 drop-shadow-md"
+                                            onError={(e) => {
+                                                e.target.onerror = null; // Evita loop infinito
+                                                const firstName = item.name.split(' ')[0];
+                                                e.target.src = `https://placehold.co/200x200/f0f4f8/009B3A?text=${encodeURIComponent(firstName)}`;
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity no-print rounded-r-lg">
+                                            <span className="text-white text-xs font-bold text-center px-1">Editar Foto</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
