@@ -30,8 +30,27 @@
             }
             .print-grid {
                 display: grid !important;
-                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                gap: 0.5rem !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* Exatamente 2 colunas */
+                gap: 4px !important; /* Mínimo de espaço entre os cartões */
+            }
+            .print-grid > div {
+                height: 125px !important; /* Cartão mais compacto para caber mais na folha */
+                border-radius: 4px !important;
+                border: none !important;
+            }
+            .print-container {
+                padding: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .print-img {
+                max-height: 95px !important;
+            }
+            .print-text-code {
+                font-size: 22px !important;
+            }
+            .print-text-name {
+                font-size: 10px !important;
             }
             .page-break-avoid {
                 page-break-inside: avoid;
@@ -39,7 +58,7 @@
             }
             @page {
                 size: A4 portrait;
-                margin: 10mm;
+                margin: 3mm; /* Mínimo espaço em branco nas bordas da folha A4 */
             }
         }
         
@@ -339,7 +358,7 @@
                     </div>
 
                     {/* Grid de Produtos */}
-                    <div className="max-w-[1200px] mx-auto px-2">
+                    <div className="max-w-[1200px] mx-auto px-2 print-container">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 print-grid">
                             {items.map((item, index) => (
                                 <div key={index} className="bg-white rounded-lg flex flex-row shadow-sm w-full h-[145px] overflow-hidden border border-gray-100 page-break-avoid relative group">
@@ -376,11 +395,11 @@
                                                 type="text" 
                                                 value={item.code} 
                                                 onChange={(e) => updateItem(index, 'code', e.target.value)}
-                                                className="w-full text-[24px] font-black text-[#002776] text-center mt-0 tracking-tighter leading-none border-b-2 border-dashed border-[#002776] focus:outline-none focus:bg-gray-100"
+                                                className="w-full text-[24px] font-black text-[#002776] text-center mt-0 tracking-tighter leading-none border-b-2 border-dashed border-[#002776] focus:outline-none focus:bg-gray-100 print-text-code"
                                                 placeholder="CÓDIGO"
                                             />
                                         ) : (
-                                            <div className="text-[26px] font-black text-[#002776] text-center mt-0 tracking-tighter leading-none">
+                                            <div className="text-[26px] font-black text-[#002776] text-center mt-0 tracking-tighter leading-none print-text-code">
                                                 {item.code}
                                             </div>
                                         )}
@@ -402,11 +421,11 @@
                                                     type="text" 
                                                     value={item.name} 
                                                     onChange={(e) => updateItem(index, 'name', e.target.value.toUpperCase())}
-                                                    className="w-full text-[10px] sm:text-[11px] font-black text-[#002776] text-center mt-1 uppercase leading-[1.1] border-b-2 border-dashed border-[#002776] focus:outline-none focus:bg-gray-100 h-auto"
+                                                    className="w-full text-[10px] sm:text-[11px] font-black text-[#002776] text-center mt-1 uppercase leading-[1.1] border-b-2 border-dashed border-[#002776] focus:outline-none focus:bg-gray-100 h-auto print-text-name"
                                                     placeholder="NOME DO PRODUTO"
                                                 />
                                             ) : (
-                                                <div className="text-[11px] font-black text-[#002776] text-center mt-1 uppercase leading-[1.1] h-auto flex items-center justify-center break-words">
+                                                <div className="text-[11px] font-black text-[#002776] text-center mt-1 uppercase leading-[1.1] h-auto flex items-center justify-center break-words print-text-name">
                                                     {item.name}
                                                 </div>
                                             )}
@@ -425,7 +444,7 @@
                                         <img 
                                             src={item.image} 
                                             alt={item.name} 
-                                            className="max-w-full max-h-[110px] object-contain transition-transform group-hover:scale-105 drop-shadow-md"
+                                            className="max-w-full max-h-[110px] object-contain transition-transform group-hover:scale-105 drop-shadow-md print-img"
                                             onError={(e) => {
                                                 e.target.onerror = null; // Evita loop infinito
                                                 const firstName = item.name.split(' ')[0];
